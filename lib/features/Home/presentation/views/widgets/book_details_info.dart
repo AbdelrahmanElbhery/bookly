@@ -1,4 +1,4 @@
-import 'package:bookly/features/book_details/presentation/views/widgets/price_bar.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/price_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

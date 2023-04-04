@@ -1,7 +1,7 @@
 import 'package:bookly/core/styles.dart';
 import 'package:flutter/material.dart';
 
-import 'also_like_image.dart';
+import '../../../../Home/presentation/views/widgets/also_like_image.dart';
 import 'book_details_image.dart';
 import 'book_details_info.dart';
 import 'custom_book_appbar.dart';
