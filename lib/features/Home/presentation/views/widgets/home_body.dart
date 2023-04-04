@@ -19,6 +19,9 @@ class HomeBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       CustomAppBar(),
+                      SizedBox(
+                        height: 25,
+                      ),
                       CustomListView(),
                       Padding(
                         padding: EdgeInsets.only(top: 50.0, bottom: 20),

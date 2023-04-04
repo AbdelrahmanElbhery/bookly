@@ -1,7 +1,7 @@
-import 'package:bookly/core/component.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../book_details_view.dart';
+import '../../../../../core/routers.dart';
 import 'best_seller_items.dart';
 
 class BestSellerListView extends StatelessWidget {
@@ -16,7 +16,7 @@ class BestSellerListView extends StatelessWidget {
         child: InkWell(
             child: const BestSellerItems(),
             onTap: () {
-              navigate_to(context: context, widget: const BookDetailsView());
+              GoRouter.of(context).push(AppRouter.kBookDetailsView);
             }),
       ),
       itemCount: 20,

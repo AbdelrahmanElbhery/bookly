@@ -16,6 +16,9 @@ class BookBody extends StatelessWidget {
       child: Column(
         children: [
           const CustomBookAppBar(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .034,
+          ),
           const BookDetailsImage(),
           const BookDetailsInfo(),
           SizedBox(
@@ -45,7 +48,7 @@ class AlsoLikeListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .15,
+      height: MediaQuery.of(context).size.height * .16,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => const Padding(

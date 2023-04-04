@@ -10,7 +10,7 @@ class BookDetailsImage extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * .31,
+          height: MediaQuery.of(context).size.height * .32,
           child: AspectRatio(
             aspectRatio: 2 / 3,
             child: Container(
