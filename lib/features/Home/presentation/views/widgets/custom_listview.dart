@@ -8,7 +8,7 @@ class CustomListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .26,
+      height: MediaQuery.of(context).size.height * .255,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemBuilder: (context, index) => const Padding(

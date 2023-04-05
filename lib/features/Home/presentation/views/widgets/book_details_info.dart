@@ -1,6 +1,5 @@
-import 'package:bookly/features/Home/presentation/views/widgets/price_bar.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/rating.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/styles.dart';
 
@@ -11,50 +10,27 @@ class BookDetailsInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .045,
+        const SizedBox(
+          height: 40,
         ),
         const Text(
           'The Jungle Book',
           style: Styles.text30,
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .0045,
+        const SizedBox(
+          height: 4,
         ),
         Text(
           'Rudyard Kipling',
           style: Styles.text18.copyWith(
-              fontWeight: FontWeight.w500, color: const Color(0xff707070)),
+              fontWeight: FontWeight.bold, color: Colors.white.withOpacity(.7)),
         ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .0155,
+        const SizedBox(
+          height: 14,
         ),
-        Row(
+        const Rating(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              FontAwesomeIcons.solidStar,
-              size: 13,
-              color: Color(0xffFFDD4F),
-            ),
-            const SizedBox(
-              width: 6.3,
-            ),
-            const Text(
-              '(4.8)',
-              style: Styles.text16,
-            ),
-            const SizedBox(width: 5),
-            Text(
-              '(23455)',
-              style: Styles.text14.copyWith(color: const Color(0xff707070)),
-            ),
-          ],
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .041,
-        ),
-        const PriceBar(),
+        )
       ],
     );
   }

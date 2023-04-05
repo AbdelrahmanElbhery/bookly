@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bookly/features/Home/presentation/views/widgets/rating.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/assets.dart';
 import '../../../../../core/styles.dart';
@@ -46,9 +46,10 @@ class BestSellerItems extends StatelessWidget {
               const SizedBox(
                 height: 3,
               ),
-              Text('J.K. Rowling',
-                  style:
-                      Styles.text16.copyWith(color: const Color(0xff707070))),
+              const Opacity(
+                opacity: .7,
+                child: Text('J.K. Rowling', style: Styles.text16),
+              ),
               const SizedBox(
                 height: 3,
               ),
@@ -64,24 +65,7 @@ class BestSellerItems extends StatelessWidget {
                     size: 20,
                   ),
                   const Spacer(),
-                  const Icon(
-                    FontAwesomeIcons.solidStar,
-                    size: 13,
-                    color: Color(0xffFFDD4F),
-                  ),
-                  const SizedBox(
-                    width: 6.3,
-                  ),
-                  const Text(
-                    '(4.8)',
-                    style: Styles.text16,
-                  ),
-                  const SizedBox(width: 5),
-                  Text(
-                    '(23455)',
-                    style:
-                        Styles.text14.copyWith(color: const Color(0xff707070)),
-                  ),
+                  const Rating(),
                 ],
               )
             ],
