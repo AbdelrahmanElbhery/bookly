@@ -1,4 +1,8 @@
+import 'package:bookly/core/styles.dart';
+import 'package:bookly/features/Home/presentation/manager/book_details_cubit/book_details_cubit.dart';
+import 'package:bookly/features/Home/presentation/manager/book_details_cubit/book_details_states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'also_like_image.dart';
 
@@ -7,16 +11,36 @@ class AlsoLikeListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .16,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const Padding(
-          padding: EdgeInsets.only(right: 10),
-          child: AlsoLikeImage(),
-        ),
-        itemCount: 10,
-      ),
+    return BlocBuilder<SimilarBooksCubit, SimilarBooksState>(
+      builder: (BuildContext context, state) {
+        if (state is SimilarBooksSuccessState) {
+          return SizedBox(
+            height: MediaQuery.of(context).size.height * .16,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: AlsoLikeImage(
+                    imageurl: state.bookmodel[index].volumeInfo!.imageLinks!
+                            .thumbnail ??
+                        ''),
+              ),
+              itemCount: state.bookmodel.length,
+            ),
+          );
+        } else if (state is SimilarBooksErrorState) {
+          return Center(
+            child: Text(
+              state.error,
+              style: Styles.text18,
+            ),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:bookly/core/routers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +12,7 @@ class CustomBookAppBar extends StatelessWidget {
       children: [
         IconButton(
           onPressed: () {
-            GoRouter.of(context).push(AppRouter.kHomescreen);
+            GoRouter.of(context).pop();
           },
           iconSize: 30,
           icon: const Icon(FontAwesomeIcons.xmark),

@@ -1,4 +1,5 @@
 import 'package:bookly/core/styles.dart';
+import 'package:bookly/features/Home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/price_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,8 @@ import 'book_details_info.dart';
 import 'custom_book_appbar.dart';
 
 class BookBody extends StatelessWidget {
-  const BookBody({Key? key}) : super(key: key);
-
+  const BookBody({Key? key, required this.bookmodel}) : super(key: key);
+  final BookModel bookmodel;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -23,12 +24,18 @@ class BookBody extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .034,
                 ),
-                const BookDetailsImage(),
-                const BookDetailsInfo(),
+                BookDetailsImage(
+                    imageurl:
+                        bookmodel.volumeInfo!.imageLinks!.thumbnail ?? ''),
+                BookDetailsInfo(
+                  model: bookmodel,
+                ),
                 const SizedBox(
                   height: 37,
                 ),
-                const PriceBar(),
+                PriceBar(
+                    price: bookmodel.saleInfo?.listPrice?.amount.toString() ??
+                        'Free'),
                 const Expanded(
                   child: SizedBox(
                     height: 50,

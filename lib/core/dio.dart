@@ -5,7 +5,7 @@ class Maindio {
   static Dio? dio;
   static init() {
     dio = Dio(BaseOptions(
-      baseUrl: 'https://student.valuxapps.com/api/',
+      baseUrl: 'https://www.googleapis.com/books/v1/',
       receiveDataWhenStatusError: true,
     ));
   }
@@ -16,11 +16,6 @@ class Maindio {
     String? language = 'en',
     String? token,
   }) async {
-    dio?.options.headers = {
-      'Content-Type': 'application/json',
-      'lang': language,
-      'Authorization': token
-    };
     return await dio?.get(path!, queryParameters: query);
   }
 

@@ -1,21 +1,22 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/assets.dart';
-
 class AlsoLikeImage extends StatelessWidget {
-  const AlsoLikeImage({Key? key}) : super(key: key);
+  const AlsoLikeImage({Key? key, required this.imageurl}) : super(key: key);
+  final String imageurl;
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 2 / 3,
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(17),
-            image: const DecorationImage(
-                image: AssetImage(
-                  AssetsData.testImage,
-                ),
-                fit: BoxFit.fill)),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: AspectRatio(
+        aspectRatio: 2 / 3,
+        child: CachedNetworkImage(
+          imageUrl: imageurl,
+          fit: BoxFit.fill,
+          errorWidget: (context, url, error) => Icon(Icons.error),
+          placeholder: (context, url) =>
+              const Center(child: CircularProgressIndicator()),
+        ),
       ),
     );
   }

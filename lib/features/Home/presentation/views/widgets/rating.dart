@@ -7,7 +7,11 @@ class Rating extends StatelessWidget {
   const Rating({
     super.key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    required this.avgrating,
+    required this.ratingcount,
   });
+  final num avgrating;
+  final int ratingcount;
   final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
@@ -22,15 +26,15 @@ class Rating extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-        const Text(
-          '(4.8)',
+        Text(
+          '${avgrating}',
           style: Styles.text16,
         ),
         const SizedBox(width: 5),
         Opacity(
           opacity: .5,
           child: Text(
-            '(23455)',
+            '(${ratingcount})',
             style: Styles.text14.copyWith(fontWeight: FontWeight.w600),
           ),
         ),

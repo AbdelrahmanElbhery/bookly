@@ -5,8 +5,9 @@ import '../../../../../core/styles.dart';
 class PriceBar extends StatelessWidget {
   const PriceBar({
     super.key,
+    required this.price,
   });
-
+  final String price;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +26,7 @@ class PriceBar extends StatelessWidget {
                               topLeft: Radius.circular(15),
                               bottomLeft: Radius.circular(15)))),
                   child: Text(
-                    '19.99€',
+                    price == 'Free' ? price : '$price €',
                     style: Styles.text18.copyWith(
                         color: Colors.black, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,

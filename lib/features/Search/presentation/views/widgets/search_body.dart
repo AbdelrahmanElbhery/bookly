@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/routers.dart';
 import '../../../../../core/styles.dart';
-import '../../../../Home/presentation/views/widgets/best_seller_items.dart';
 import 'custom_search_textfield.dart';
 
 class SearchBody extends StatelessWidget {
@@ -44,7 +43,7 @@ class CustomSearchListView extends StatelessWidget {
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.symmetric(vertical: 10.0),
         child: InkWell(
-            child: const BestSellerItems(),
+            child: Container(),
             onTap: () {
               GoRouter.of(context).push(AppRouter.kBookDetailsView);
             }),
