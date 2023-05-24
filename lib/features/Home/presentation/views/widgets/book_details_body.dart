@@ -26,16 +26,14 @@ class BookBody extends StatelessWidget {
                 ),
                 BookDetailsImage(
                     imageurl:
-                        bookmodel.volumeInfo!.imageLinks!.thumbnail ?? ''),
+                        bookmodel.volumeInfo!.imageLinks !=null ? bookmodel.volumeInfo!.imageLinks!.thumbnail : ''),
                 BookDetailsInfo(
                   model: bookmodel,
                 ),
                 const SizedBox(
-                  height: 37,
+                  height: 30,
                 ),
-                PriceBar(
-                    price: bookmodel.saleInfo?.listPrice?.amount.toString() ??
-                        'Free'),
+                PriceBar(bookmodel: bookmodel),
                 const Expanded(
                   child: SizedBox(
                     height: 50,
@@ -52,7 +50,7 @@ class BookBody extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                const AlsoLikeListView()
+                const AlsoLikeListView(),
               ],
             ),
           ),

@@ -61,4 +61,25 @@ class HomeRepoImpl implements HomeRepo {
       return left(ServerFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<ServerFailure, List<BookModel>>> fitchSearchBooks(String searchtext)async {
+    try {
+      List<BookModel> bookmodels = [];
+      var response = await Maindio.getdata(
+          path:
+          'volumes?q=$searchtext');
+      for (var item in response?.data['items']) {
+        bookmodels.add(BookModel.fromJson(item));
+      }
+      return right(bookmodels);
+    } catch (e) {
+      if (e is DioError) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+
 }

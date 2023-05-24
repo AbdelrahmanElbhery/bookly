@@ -7,4 +7,5 @@ abstract class HomeRepo {
   Future<Either<ServerFailure, List<BookModel>>> fitchNewestBooks();
   Future<Either<ServerFailure, List<BookModel>>> fitchFeaturedBooks();
   Future<Either<ServerFailure, List<BookModel>>> fitchSimilarBooks();
+  Future<Either<ServerFailure, List<BookModel>>> fitchSearchBooks(String searchtext);
 }

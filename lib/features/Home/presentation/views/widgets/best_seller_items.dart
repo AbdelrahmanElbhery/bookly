@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:bookly/core/assets.dart';
 import 'package:bookly/features/Home/data/models/book_model/book_model.dart';
 import 'package:bookly/features/Home/presentation/views/widgets/rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -20,13 +21,13 @@ class BestSellerItems extends StatelessWidget {
               aspectRatio: 2.6 / 4,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: CachedNetworkImage(
-                      imageUrl: model.volumeInfo!.imageLinks!.thumbnail!,
+                  child:  model.volumeInfo!.imageLinks !=null ? CachedNetworkImage(
+                      imageUrl:model.volumeInfo!.imageLinks!.thumbnail! ,
                       fit: BoxFit.fill,
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
                       placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()))),
+                          const Center(child: CircularProgressIndicator())):Image.asset(AssetsData.logo)),
             )),
         const SizedBox(
           width: 30,
@@ -49,7 +50,7 @@ class BestSellerItems extends StatelessWidget {
               ),
               Opacity(
                 opacity: .7,
-                child: Text('${model.volumeInfo?.authors![0]}',
+                child: Text('${model.volumeInfo?.authors != null ?model.volumeInfo?.authors![0] : 'writer'}',
                     style: Styles.text16),
               ),
               const SizedBox(

@@ -3,7 +3,9 @@ import 'package:bookly/features/Home/presentation/manager/featured_book_list_cub
 import 'package:bookly/features/Home/presentation/manager/featured_book_list_cubit/featured_books_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routers.dart';
 import 'custom_listview_item.dart';
 
 class CustomListView extends StatelessWidget {
@@ -22,9 +24,15 @@ class CustomListView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.only(right: 16.0),
-                      child: CustomListViewItem(
-                          imageurl: state.bookmodel[index].volumeInfo!
-                              .imageLinks!.thumbnail!),
+                      child: InkWell(
+                        onTap: () {
+                          GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                              extra: state.bookmodel[index]);
+                        },
+                        child: CustomListViewItem(
+                            imageurl: state.bookmodel[index].volumeInfo!
+                                .imageLinks!.thumbnail!),
+                      ),
                     )),
           );
         } else if (state is FeaturedBooksErrorState) {

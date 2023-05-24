@@ -3,7 +3,9 @@ import 'package:bookly/features/Home/presentation/manager/book_details_cubit/boo
 import 'package:bookly/features/Home/presentation/manager/book_details_cubit/book_details_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../../core/routers.dart';
 import 'also_like_image.dart';
 
 class AlsoLikeListView extends StatelessWidget {
@@ -17,13 +19,20 @@ class AlsoLikeListView extends StatelessWidget {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .16,
             child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: AlsoLikeImage(
-                    imageurl: state.bookmodel[index].volumeInfo!.imageLinks!
-                            .thumbnail ??
-                        ''),
+                padding: const EdgeInsets.only(right: 12, bottom: 8),
+                child: InkWell(
+                  onTap: () {
+                    GoRouter.of(context).push(AppRouter.kBookDetailsView,
+                        extra: state.bookmodel[index]);
+                  },
+                  child: AlsoLikeImage(
+                      imageurl: state.bookmodel[index].volumeInfo!.imageLinks!
+                              .thumbnail ??
+                          ''),
+                ),
               ),
               itemCount: state.bookmodel.length,
             ),

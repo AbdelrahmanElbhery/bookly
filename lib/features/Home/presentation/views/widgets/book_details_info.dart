@@ -17,17 +17,19 @@ class BookDetailsInfo extends StatelessWidget {
         Text(
           model.volumeInfo!.title!,
           style: Styles.text30,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(
           height: 4,
         ),
         Text(
-          model.volumeInfo!.authors![0],
+          model.volumeInfo!.authors !=null ? model.volumeInfo!.authors![0] : 'Writer',
           style: Styles.text18.copyWith(
               fontWeight: FontWeight.bold, color: Colors.white.withOpacity(.7)),
         ),
         const SizedBox(
-          height: 14,
+          height: 10,
         ),
         Rating(
           mainAxisAlignment: MainAxisAlignment.center,
